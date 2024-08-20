@@ -26,6 +26,7 @@ const Card: React.FC<CardProps> = ({ job, ...props }) => {
         flexDirection: "column",
         justifyContent: "space-between",
         p: 1,
+        flexGrow: {xs:1,md:0}
       }}
     >
       <CardContent>
