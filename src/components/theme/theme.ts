@@ -1,13 +1,14 @@
 import { createTheme } from "@mui/material/styles";
 
+export const getTheme = (mode: "dark" | "light") => {
 const theme = createTheme({
   palette: {
-    mode:'dark',
+    mode:mode,
     primary: {
-      main: "#0052cc",
+      main: mode === 'light'?"#0052cc":"#00226b",
     },
     secondary: {
-      main: "#edf2ff",
+      main: mode === 'light' ?"#edf2ff":"#2e323d",
     },
   },
   breakpoints:{
@@ -51,5 +52,7 @@ const theme = createTheme({
     },
   },
 });
+return theme
+}
 
-export default theme;
+export default getTheme;
