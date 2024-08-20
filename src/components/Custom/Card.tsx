@@ -1,4 +1,3 @@
-"use client";
 import {
   Button,
   CardActions,
@@ -10,6 +9,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { JobType } from "../../helpers/types/job";
+import { Link } from "react-router-dom";
 
 export interface CardProps extends PaperProps {
   job: JobType;
@@ -77,7 +77,9 @@ const Card: React.FC<CardProps> = ({ job, ...props }) => {
           alignItems: "center",
         }}
       >
-        <Button variant="contained">View More</Button>
+        <Link to={`/${job.uuid}`}>
+          <Button variant="contained">View More</Button>
+        </Link>
       </CardActions>
     </Paper>
   );

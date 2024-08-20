@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { JobType } from "../../helpers/types/job";
 import { Box, BoxProps } from "@mui/material";

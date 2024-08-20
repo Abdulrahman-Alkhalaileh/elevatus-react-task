@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import { Box, Button, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";

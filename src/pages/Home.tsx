@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import { BoxProps, Stack, Typography } from "@mui/material";
 import { JobResults } from "../helpers/types/job";
@@ -26,7 +25,7 @@ const Home: React.FC<HomeProps> = ({ ...props }) => {
   }, [searchParams]);
 
   return (
-    <Stack spacing={4} alignItems='center' justifyContent='space-between' minHeight='80vh' pb={4}>
+    <Stack spacing={4} alignItems='center' justifyContent='space-between' pb={4}>
           <Filter />
       {data ? (
           <JobsList jobs={data.jobs} />
