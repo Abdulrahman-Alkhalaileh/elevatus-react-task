@@ -14,17 +14,21 @@ const CustomPagination: React.FC<CustomPaginationProps> = ({
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = (e: React.ChangeEvent<unknown>, page: number) => {
-    setSearchParams({ page: page.toString() });
+    const newParams = new URLSearchParams(searchParams)
+    newParams.set('page', page.toString())
+    setSearchParams(newParams);
   };
 
   return (
     <Box display="flex" alignItems="center" justifyContent="center">
       <Pagination
         count={pages}
-        page={Number(searchParams.get("page") || "0")}
+        page={Number(searchParams.get("page") || "1")}
         onChange={handleChange}
         size="large"
         variant="outlined"
+        color="primary"
+        shape="rounded"
         {...props}
       />
     </Box>
