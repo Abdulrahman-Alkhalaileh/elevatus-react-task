@@ -2,6 +2,7 @@ import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
+    mode:'light',
     primary: {
       main: "#0052cc",
     },
@@ -9,11 +10,21 @@ const theme = createTheme({
       main: "#edf2ff",
     },
   },
+  breakpoints:{
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 900,
+        lg: 1200,
+        xl: 1536,
+      },
+  },
   typography: {
     fontFamily: "inherit",
     h1: {
       // 40px
       fontSize: "2.5rem",
+      fontWeight: 600,
     },
     h2: {
       // 32px
