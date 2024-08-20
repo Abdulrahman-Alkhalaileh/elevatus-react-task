@@ -2,10 +2,12 @@ import React from "react";
 import { Box, BoxProps } from "@mui/material";
 import Logo from "./Logo";
 import ThemeSwitch from "./ThemeSwitch";
+import LanguageButton from "./LanguageButton";
 
 export interface HeaderProps extends BoxProps {}
 
 const Header: React.FC<HeaderProps> = ({ ...props }) => {
+
   return (
     <Box
       py={3}
@@ -21,7 +23,10 @@ const Header: React.FC<HeaderProps> = ({ ...props }) => {
       {...props}
     >
       <Logo />
-      <ThemeSwitch/>
+      <Box display='flex' gap={3}>
+        <LanguageButton />
+        <ThemeSwitch/>
+      </Box>
     </Box>
   );
 };

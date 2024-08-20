@@ -3,12 +3,14 @@ import { Box, Button, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSearchParams } from "react-router-dom";
 import StyledTextField from "./Styled/StyledTextField";
+import { useTranslation } from "react-i18next";
 
 export interface FilterProps {}
 
 const Filter: React.FC<FilterProps> = ({ ...props }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState("");
+  const {t} = useTranslation()
 
   return (
     <>
@@ -21,7 +23,7 @@ const Filter: React.FC<FilterProps> = ({ ...props }) => {
         p={1}
       >
         <StyledTextField
-          placeholder="Search By Job Title..."
+          placeholder={t("searchPlaceholder")}
           size="small"
           InputProps={{ startAdornment: <SearchIcon color="disabled" /> }}
           value={search}
@@ -42,7 +44,7 @@ const Filter: React.FC<FilterProps> = ({ ...props }) => {
               else setSearchParams({ page: "1" });
             }}
           >
-            Search
+            {t('search')}
           </Button>
           <Button
             variant="outlined"
@@ -59,7 +61,7 @@ const Filter: React.FC<FilterProps> = ({ ...props }) => {
               setSearchParams(newParams);
             }}
           >
-            Reset
+            {t('reset')}
           </Button>
         </Stack>
       </Box>

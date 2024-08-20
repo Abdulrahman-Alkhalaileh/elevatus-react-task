@@ -15,14 +15,17 @@ import GpsFixedIcon from "@mui/icons-material/GpsFixed";
 import { titleIdSplit } from "../utils/titleIdSplit";
 import JobsList from "../components/Lists/JobsList";
 import CustomPagination from "../components/Custom/CustomPagination";
+import { useTranslation } from "react-i18next";
 
 export interface JobInformationProps {}
 
 const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
   const { slug } = useParams();
   const [jobData, setJobData] = useState<JobType | undefined>(undefined);
   const [jobs, setJobs] = useState<JobResults | null>(null);
+  const {t} = useTranslation()
 
   useEffect(() => {
     if (slug) {
@@ -52,7 +55,7 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
   }, [searchParams]);
 
   return (
-    <Grid container columnSpacing={1} rowGap={4} flexDirection="row-reverse">
+    <Grid container columnSpacing={1} rowGap={4} flexDirection="row-reverse" position="relative">
       <Grid item xs={12} xl={9}>
         {jobData && (
           <Paper sx={{ p: 3, borderRadius: 3, minHeight: 700 }} elevation={5}>
@@ -62,7 +65,7 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
                   {jobData.title}
                 </Typography>
                 <Typography color="text.secondary">
-                  <strong>Posted At:</strong>{" "}
+                  <strong>{t("postedAt")}:</strong>{" "}
                   {new Date(jobData.posted_at).toLocaleString()}
                 </Typography>
                 <Typography
@@ -80,7 +83,7 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
               </Stack>
               <Stack spacing={1}>
                 <Typography variant="h2" fontWeight={500}>
-                  Description
+                  {t("description")}
                 </Typography>
                 <Box
                   dangerouslySetInnerHTML={{ __html: jobData.description }}
@@ -88,7 +91,7 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
               </Stack>
               <Box>
                 <Typography variant="h2" fontWeight={500} gutterBottom>
-                  Summary
+                  {t('summary')}
                 </Typography>
                 <Grid
                   container
@@ -104,7 +107,7 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
                         fontWeight={600}
                         minWidth={{ xs: 100, md: 200 }}
                       >
-                        Job Type:
+                        {t("jobType")}:
                       </Typography>
                       <Typography variant="body2">
                         {jobData.job_type[0] || "---"}
@@ -115,7 +118,7 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
                         fontWeight={600}
                         minWidth={{ xs: 100, md: 200 }}
                       >
-                        Degree:
+                        {t("degree")}:
                       </Typography>
                       <Typography variant="body2">
                         {jobData.degree[0] || "---"}
@@ -126,7 +129,7 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
                         fontWeight={600}
                         minWidth={{ xs: 100, md: 200 }}
                       >
-                        Industry:
+                        {t("industry")}:
                       </Typography>
                       <Typography variant="body2">
                         {jobData.industry[0] || "---"}
@@ -146,7 +149,7 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
                         fontWeight={600}
                         minWidth={{ xs: 100, md: 200 }}
                       >
-                        Major:
+                        {t('major')}:
                       </Typography>
                       <Typography variant="body2">
                         {jobData.major[0] || "---"}
@@ -157,7 +160,7 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
                         fontWeight={600}
                         minWidth={{ xs: 100, md: 200 }}
                       >
-                        Nationality:
+                        {t("nationality")}:
                       </Typography>
                       <Typography variant="body2">
                         {jobData.nationality[0] || "---"}
@@ -168,7 +171,7 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
                         fontWeight={600}
                         minWidth={{ xs: 100, md: 200 }}
                       >
-                        Career Level:
+                        {t("careerLevel")}:
                       </Typography>
                       <Typography variant="body2">
                         {jobData.career_level[0] || "---"}
@@ -179,9 +182,9 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
               </Box>
               <Stack spacing={2}>
                 <Typography variant="h2" fontWeight={500}>
-                  Required Skills
+                  {t("requiredSkills")}
                 </Typography>
-                <Box display="flex" gap={3} px={4}>
+                <Box display="flex" flexWrap='wrap' gap={3} px={4}>
                   {jobData.skills.map((skill) => (
                     <Chip
                       key={crypto.randomUUID()}
@@ -201,9 +204,10 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
         )}
       </Grid>
       {jobs && (
-        <Grid item xs={12} xl={3} bgcolor="secondary.main" borderRadius={3}>
+        <Grid item xs={12} xl={3} position="sticky" top={-100} >
           <JobsList
             maxHeight={700}
+            maxWidth={{xs:'fit-content',xl:400}}
             jobs={jobs.jobs}
             sx={{ overflowY: "auto", overflowX: "hidden" }}
           />

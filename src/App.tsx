@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Box
-          py={3}
+          py={{ xs: 2, md: 5}}
           px={{ xs: 2, md: 8 }}
           minHeight="83.7vh"
           bgcolor="background.default"

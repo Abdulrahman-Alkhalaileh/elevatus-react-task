@@ -1,0 +1,19 @@
+{
+  "language": "English",
+  "viewMore": "المزيد",
+  "searchPlaceholder": "ادخل عنوان الوظيفة...",
+  "search": "البحث",
+  "reset": "التراجع",
+  "jobTitle": "المسمى الوظيفي",
+  "jobType": "نوع الوظيفة",
+  "postedAt": "وقت النشر",
+  "description": "وصف الوظيفة",
+  "summary": "المؤهلات",
+  "skills": "المهارات المطلوبة",
+  "degree": "الشهادة",
+  "industry": "نوع الصناعة",
+  "major": "التخصص",
+  "nationality": "الجنسية",
+  "careerLevel": "المستوى",
+  "requiredSkills": "المهارات المطلوبة"
+}

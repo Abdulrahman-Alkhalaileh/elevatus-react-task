@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Box,
   Button,
   CardActions,
   CardContent,
@@ -10,13 +11,17 @@ import {
 } from "@mui/material";
 import { JobType } from "../../helpers/types/job";
 import { Link, useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import GpsFixedIcon from "@mui/icons-material/GpsFixed";
 
 export interface CardProps extends PaperProps {
   job: JobType;
 }
 
 const Card: React.FC<CardProps> = ({ job, ...props }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearachParams] = useSearchParams();
+  const {t} = useTranslation()
 
   return (
     <Paper
@@ -33,7 +38,7 @@ const Card: React.FC<CardProps> = ({ job, ...props }) => {
     >
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Job Title
+          {t("jobTitle")}
         </Typography>
         <Typography
           variant="h2"
@@ -48,7 +53,7 @@ const Card: React.FC<CardProps> = ({ job, ...props }) => {
         </Typography>
         <Divider />
         <Typography color="text.secondary" variant="body2" pt={1}>
-          Career Level
+          {t("jobType")}
         </Typography>
         {job.job_type[0] ? (
           <Typography variant="h5" pb={2}>
@@ -59,16 +64,16 @@ const Card: React.FC<CardProps> = ({ job, ...props }) => {
             ---
           </Typography>
         )}
-        <Typography color="text.secondary" variant="body2">
-          Location
-        </Typography>
+        <Box display='flex' alignItems='center' gap={1}>
+        <GpsFixedIcon/>
         {job.location.city ? (
-          <Typography variant="h5">{job.location.city}</Typography>
+          <Typography variant="h5" textTransform='capitalize' >{job.location.country + ' - '+job.location.city}</Typography>
         ) : (
           <Typography variant="body2" color="text.secondary">
             ---
           </Typography>
         )}
+        </Box>
       </CardContent>
       <Divider />
       <CardActions
@@ -87,7 +92,7 @@ const Card: React.FC<CardProps> = ({ job, ...props }) => {
             variant="contained"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            View More
+            {t('viewMore')}
           </Button>
         </Link>
       </CardActions>
