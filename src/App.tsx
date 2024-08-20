@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Header />
-      <Box py={3} px={8}>
+      <Box py={3} px={{xs:2,md:8}} bgcolor='background.default'>
         <BrowserRouter>
           <Routes>
             <Route path="/about" element={<h1>About</h1>}/>
