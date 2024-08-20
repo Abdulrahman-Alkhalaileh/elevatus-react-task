@@ -8,7 +8,7 @@ const Header: React.FC<HeaderProps> = ({ ...props }) => {
   return (
     <Box
       py={3}
-      px={8}
+      px={{xs:3,sm:3,md:8}}
       bgcolor="primary.main"
       display="flex"
       position="sticky"
