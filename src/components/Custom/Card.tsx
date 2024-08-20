@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Button,
   CardActions,
@@ -7,26 +8,27 @@ import {
   PaperProps,
   Typography,
 } from "@mui/material";
-import React from "react";
 import { JobType } from "../../helpers/types/job";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export interface CardProps extends PaperProps {
   job: JobType;
 }
 
 const Card: React.FC<CardProps> = ({ job, ...props }) => {
+  const [searchParams, setSearachParams] = useSearchParams();
+
   return (
     <Paper
       {...props}
-      elevation={4}
+      elevation={6}
       sx={{
         width: 300,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         p: 1,
-        flexGrow: {xs:1,md:0}
+        flexGrow: { xs: 1, md: 0 },
       }}
     >
       <CardContent>
@@ -38,7 +40,7 @@ const Card: React.FC<CardProps> = ({ job, ...props }) => {
           component="div"
           fontWeight={600}
           gutterBottom
-          whiteSpace='nowrap'
+          whiteSpace="nowrap"
           textOverflow="ellipsis"
           overflow="hidden"
         >
@@ -77,8 +79,16 @@ const Card: React.FC<CardProps> = ({ job, ...props }) => {
           alignItems: "center",
         }}
       >
-        <Link to={`/${job.uuid}`}>
-          <Button variant="contained">View More</Button>
+        <Link
+          to={`/${job.title + "-" + job.uuid.split("-")[0]}?${searchParams}`}
+          preventScrollReset={false}
+        >
+          <Button
+            variant="contained"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            View More
+          </Button>
         </Link>
       </CardActions>
     </Paper>
