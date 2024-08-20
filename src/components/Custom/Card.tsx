@@ -20,7 +20,7 @@ export interface CardProps extends PaperProps {
 
 const Card: React.FC<CardProps> = ({ job, ...props }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [searchParams, setSearachParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const {t} = useTranslation()
 
   return (
@@ -85,7 +85,7 @@ const Card: React.FC<CardProps> = ({ job, ...props }) => {
         }}
       >
         <Link
-          to={`/${job.title + "-" + job.uuid.split("-")[0]}?${searchParams}`}
+          to={`/${job.title + "-" + job.uuid.split("-")[0]}?page=${searchParams.get('page')}`}
           preventScrollReset={false}
         >
           <Button
