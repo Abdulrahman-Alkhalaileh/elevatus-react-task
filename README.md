@@ -32,6 +32,9 @@ Here is the list of the folders inside src and the reason for them:
 - ### components:
   - All the components which used in the pages files are included there and categorized, As well as the Navigation folder which contains the header and footer which used directly in the App.tsx file.
 
+- ### Loading:
+  - contains the skeletons of the components to load them when data is fetching.
+
 ## What I made in this project:
 
 - Created 2 pages:
@@ -49,12 +52,16 @@ Here is the list of the folders inside src and the reason for them:
 
 - **Extra work:** I have added a custom theme and provided the dark theme to the project, and connected it to local storage so the behavior of the user will be saved.
 
+- **Extra work:** I have added Loading Skeletons and circular progress to enhance user experience.
+
 
 ## Important notes to mention:
 
 - because the project scale is small, I didn't have to use state management tools (ex: `Redux`), the local states was more than enough.
 
 - I have Added extra functionality which is the dark theme, and for that I have used the theme feature provided by MUI, and I had to use context for that so I can apply the theme on the whole project.
+
+- I have added loading skeletons as an extra to enhance user experience.
 
 - I have made all the components to be reusable and you will notice that I'm modifying the props of the MUI elements outside of the component (In the parent component).
 

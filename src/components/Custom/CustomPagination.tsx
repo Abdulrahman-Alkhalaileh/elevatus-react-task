@@ -3,7 +3,7 @@ import { Box, Pagination, PaginationProps } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
 
 export interface CustomPaginationProps extends PaginationProps {
-  pages: number;
+  pages?: number;
 }
 
 const CustomPagination: React.FC<CustomPaginationProps> = ({
