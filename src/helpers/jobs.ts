@@ -1,17 +1,20 @@
 import axios from "axios";
 import { JobTypeResponse } from "./types/job";
 
+//Define the type of getAllJobs params
 interface jobQueryParams {
   itemQuery?: string;
   limit?: number;
   page?: number;
 }
 
+// This class handle the api call for us
 export default class Jobs {
   protected baseUrl = process.env.REACT_APP_MAIN_DOMAIN as string;
   protected acceptAccount = process.env.REACT_APP_ACCEPT_ACCOUNT as string;
   protected acceptCompany = process.env.REACT_APP_ACCEPT_COMPANY as string;
 
+  // this function will return a promise that will be handled when called
   async getAllJobs({
     itemQuery,
     limit = 10,

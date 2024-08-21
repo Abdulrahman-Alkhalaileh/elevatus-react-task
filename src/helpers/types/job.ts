@@ -60,6 +60,7 @@ export interface DateTimeInfo {
   timezone: string;
 }
 
+// Define the type of response for the getJobs API to easily deal with the data
 export interface JobTypeResponse {
   statusCode: number;
   message: string;
