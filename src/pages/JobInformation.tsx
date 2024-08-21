@@ -21,7 +21,6 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
     if (slug) {
       // first we will get the title and the id from the pathname
       const search = titleIdSplit(slug);
-
       if (search) {
         const client = new Jobs();
         // we will search for the title, then we will call setJobData to store the job which it's
@@ -30,12 +29,14 @@ const JobInformation: React.FC<JobInformationProps> = ({ ...props }) => {
         // we called this api twice, but for frontend side, it's better to search in array of 3 elements
         // than to search in the whole data, so we can consider this call as getJobById api call.
         client
-          .getAllJobs({ itemQuery: search[0] })
+          .getAllJobs({ itemQuery: search[0],limit:150,page:0 })
           .then((res) =>
             setJobData(
               res.results.jobs.find((job) => job.uuid.includes(search[1]))
             )
           );
+          //This approach works, but it contains a lot of issues, it related to the same jobs in that page, if not found, the job will never run.
+          // setJobData(jobs?.jobs.find(job=> job.title === search[0] && job.uuid.includes(search[1])))
       }
     }
   }, [slug]);
