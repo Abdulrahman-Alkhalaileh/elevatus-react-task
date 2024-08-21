@@ -15,10 +15,11 @@ const Home: React.FC<HomeProps> = ({ ...props }) => {
 
   useEffect(() => {
     const client = new Jobs();
+    // we are handling the page limit and itemQuery by searchParams
     client
       .getAllJobs({
         limit: 12,
-        page: Number(searchParams.get("page") || "1") - 1,
+        page: Number(searchParams.get("page") || "1") - 1, // -1 to make sure that it matches MUI patination because it starts at 1 not 0
         itemQuery: searchParams.get("title") || "",
       })
       .then((res) => setData(res.results));

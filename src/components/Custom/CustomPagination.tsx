@@ -13,6 +13,7 @@ const CustomPagination: React.FC<CustomPaginationProps> = ({
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = (e: React.ChangeEvent<unknown>, page: number) => {
+    // This function stores the new page number in search params, then the api will be recalled whenever that param changed
     const newParams = new URLSearchParams(searchParams)
     newParams.set('page', page.toString())
     setSearchParams(newParams);

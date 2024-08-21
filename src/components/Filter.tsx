@@ -7,6 +7,10 @@ import { useTranslation } from "react-i18next";
 
 export interface FilterProps {}
 
+// The Idea of this component that there is a controlled textField which store the data in useState.
+// once the search button clicked, the onclick function will set the value of that state into the search param.
+// if the value was '', the value will never update.
+// once the reset button clicked, the search term will be deleted form the searchParams, but the page param will still the same.
 const Filter: React.FC<FilterProps> = ({ ...props }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState("");
@@ -41,7 +45,6 @@ const Filter: React.FC<FilterProps> = ({ ...props }) => {
             }}
             onClick={() => {
               if (search !== "") setSearchParams({ title: search, page: "1" });
-              else setSearchParams({ page: "1" });
             }}
           >
             {t('search')}

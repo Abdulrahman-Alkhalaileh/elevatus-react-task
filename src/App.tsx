@@ -18,7 +18,6 @@ function App() {
           bgcolor="background.default"
         >
           <Routes>
-            <Route path="/about" element={<h1>About</h1>} />
             <Route path="/" element={<Home />} />
             <Route path="/:slug" element={<JobInformation />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />

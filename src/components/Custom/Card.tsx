@@ -84,8 +84,9 @@ const Card: React.FC<CardProps> = ({ job, ...props }) => {
           alignItems: "center",
         }}
       >
+        {/* the slug will be the job title, and the first section of the job id, to make sure the we choose the wanted job */}
         <Link
-          to={`/${job.title + "-" + job.uuid.split("-")[0]}?page=${searchParams.get('page')}`}
+          to={`/${job.title + "-" + job.uuid.split("-")[0]}?page=${searchParams.get('page') || '1'}`}
           preventScrollReset={false}
         >
           <Button
